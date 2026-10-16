@@ -6,7 +6,7 @@ An experimental Python-based voice assistant designed to respond with empathy an
 
 ## 🔗 Project Links
 
-- **GitHub Repository:** https://github.com/TheZohaibKhan/AIParentBot
+- **GitHub Repository:** [https://github.com/TheZohaibKhan/AIParentBot](https://thezohaibkhan.github.io/AIParentBot/)
 - **Live Demo:** Not deployed yet. The current program uses a local microphone and Python modules, so it cannot run directly on GitHub Pages. A web interface and a suitable Python hosting deployment would be needed for a browser-based demo.
 
 ## 📑 Table of Contents
