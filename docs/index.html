@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111827">
+<meta name="description" content="AIParentBot — an interactive showcase for a voice-first, empathetic AI parenting companion.">
+<title>AIParentBot — A little more understanding</title>
+<style>
+:root{--bg:#0b1020;--panel:#111a2d;--panel2:#151f35;--line:rgba(255,255,255,.09);--text:#f4f7ff;--muted:#a5b1c9;--mint:#8de4c1;--blue:#93b8ff;--peach:#ffc9a8;--lav:#c6b7ff;--danger:#ff9b9b;--shadow:0 24px 80px rgba(0,0,0,.28)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% 0%,rgba(91,111,210,.18),transparent 35%),radial-gradient(ellipse at 90% 18%,rgba(83,206,164,.12),transparent 30%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}button,input,textarea{font:inherit}button{cursor:pointer}.shell{max-width:1260px;margin:auto;padding:24px 28px 46px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:8px 0 28px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}.brandmark{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,var(--mint),var(--blue));color:#0b1723;font-size:22px;box-shadow:0 8px 28px #8de4c122}.brand strong{font-size:17px;letter-spacing:-.3px}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}.nav{display:flex;align-items:center;gap:10px}.nav a,.nav button{color:var(--muted);text-decoration:none;border:1px solid transparent;background:transparent;padding:10px 13px;border-radius:12px;font-size:13px}.nav a:hover,.nav button:hover{color:var(--text);border-color:var(--line);background:#ffffff08}.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #8de4c13d;background:#8de4c10d;color:var(--mint);padding:7px 11px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.4px}.dot{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px #8de4c11c}.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center;padding:34px 0 50px}.eyebrow{color:var(--mint);font-size:12px;letter-spacing:2.4px;text-transform:uppercase;font-weight:800}.hero h1{font-size:clamp(42px,5.7vw,76px);line-height:1.03;letter-spacing:-3.8px;margin:17px 0 20px;max-width:720px}.gradient{background:linear-gradient(100deg,var(--mint),var(--blue) 62%,var(--lav));-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{font-size:17px;color:var(--muted);max-width:610px;margin:0 0 25px}.actions{display:flex;gap:12px;flex-wrap:wrap}.btn{border:0;border-radius:13px;padding:12px 17px;font-weight:750;font-size:13px;display:inline-flex;align-items:center;justify-content:center;gap:9px;transition:transform .18s,filter .18s}.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}.btn.primary{background:var(--mint);color:#092018;box-shadow:0 10px 30px #8de4c11c}.btn.secondary{background:#ffffff08;border:1px solid var(--line);color:var(--text)}.fine{font-size:11px;color:#8794ae;margin-top:15px}.demo-card{position:relative;background:linear-gradient(145deg,#19243b,#111a2d 65%);border:1px solid var(--line);border-radius:28px;padding:23px;box-shadow:var(--shadow);overflow:hidden}.demo-card:before{content:"";position:absolute;width:230px;height:230px;background:#8de4c114;filter:blur(55px);border-radius:50%;top:-100px;right:-60px;pointer-events:none}.card-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:18px;border-bottom:1px solid var(--line);position:relative}.assistant-id{display:flex;align-items:center;gap:11px}.avatar{width:42px;height:42px;border-radius:15px;background:linear-gradient(135deg,#8de4c1,#93b8ff);display:grid;place-items:center;color:#10202a;font-size:21px}.assistant-id strong{display:block;font-size:14px}.assistant-id span{display:block;color:var(--muted);font-size:11px}.mini-status{font-size:10px;color:var(--mint);background:#8de4c111;border:1px solid #8de4c12b;border-radius:999px;padding:6px 8px}.chat-preview{padding:22px 0 13px;min-height:255px;display:flex;flex-direction:column;gap:14px}.bubble{max-width:90%;padding:13px 15px;border-radius:17px;font-size:13px;animation:rise .3s ease}.bubble.bot{align-self:flex-start;background:#ffffff0a;border:1px solid var(--line);border-top-left-radius:5px;color:#e9efff}.bubble.user{align-self:flex-end;background:#8de4c1;color:#10251d;border-top-right-radius:5px}.bubble small{display:block;font-size:10px;opacity:.65;margin-bottom:5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase}.typing{display:none;color:var(--muted);font-size:12px;padding:0 0 8px}.typing.show{display:block}.suggestions{display:flex;gap:8px;flex-wrap:wrap}.chip{background:#ffffff06;color:#cbd5e8;border:1px solid var(--line);border-radius:999px;padding:8px 11px;font-size:11px}.chip:hover{border-color:#8de4c17a;color:var(--mint)}.composer{display:flex;gap:9px;margin-top:16px;padding:8px;background:#090f1d;border:1px solid var(--line);border-radius:16px}.composer input{min-width:0;flex:1;background:transparent;border:0;outline:0;color:var(--text);padding:8px;font-size:13px}.icon-btn{width:42px;min-width:42px;border:1px solid var(--line);border-radius:12px;background:#ffffff08;color:var(--text);font-size:17px}.icon-btn.send{background:var(--mint);color:#10251d;border:0}.micro-note{font-size:10px;color:#77849e;margin-top:10px}.section{padding:38px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:22px}.section-head h2{font-size:clamp(27px,3vw,38px);letter-spacing:-1.3px;margin:8px 0 0}.section-head p{color:var(--muted);max-width:480px;font-size:13px;margin:0}.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.feature{background:linear-gradient(145deg,#ffffff08,#ffffff03);border:1px solid var(--line);border-radius:20px;padding:21px;min-height:190px}.feature-icon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:20px;margin-bottom:20px;background:#8de4c116;color:var(--mint)}.feature:nth-child(2) .feature-icon{background:#93b8ff18;color:var(--blue)}.feature:nth-child(3) .feature-icon{background:#c6b7ff18;color:var(--lav)}.feature:nth-child(4) .feature-icon{background:#ffc9a818;color:var(--peach)}.feature h3{margin:0 0 8px;font-size:15px}.feature p{margin:0;color:var(--muted);font-size:12px}.workspace{display:grid;grid-template-columns:.8fr 1.2fr;gap:16px}.panel{background:linear-gradient(145deg,#141e33,#101829);border:1px solid var(--line);border-radius:22px;padding:22px}.panel h3{font-size:17px;margin:0 0 7px}.panel .sub{color:var(--muted);font-size:12px;margin:0 0 19px}.mood-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.mood{border:1px solid var(--line);border-radius:15px;background:#ffffff05;color:var(--muted);padding:13px 5px;font-size:11px}.mood span{display:block;font-size:23px;margin-bottom:5px}.mood.active{border-color:#8de4c1a0;background:#8de4c111;color:var(--mint);box-shadow:inset 0 0 0 1px #8de4c11c}.mood-help{font-size:11px;color:var(--muted);margin-top:13px}.range-label{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin:18px 0 8px}.range-label strong{color:var(--text)}input[type=range]{width:100%;accent-color:var(--mint)}.response-box{background:#0a1120;border:1px solid var(--line);border-radius:16px;padding:17px;margin:16px 0}.response-label{color:var(--mint);font-size:10px;letter-spacing:1.5px;font-weight:800;text-transform:uppercase}.response-box p{font-size:14px;margin:9px 0 0;color:#e7edfb}.response-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tiny{font-size:10px;color:#8290a9}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{padding:18px;border-left:2px solid #8de4c166;background:#ffffff04;border-radius:0 14px 14px 0}.step b{font-size:11px;color:var(--mint);letter-spacing:1px}.step h4{font-size:14px;margin:8px 0 5px}.step p{font-size:11px;color:var(--muted);margin:0}.notice{border:1px solid #ffc9a83a;background:#ffc9a80a;border-radius:16px;padding:15px 17px;display:flex;gap:12px;color:#f3d9c7;font-size:12px;margin-top:18px}.notice strong{color:var(--peach)}.footer{margin-top:48px;padding:23px 0 0;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--muted);font-size:11px}.footer a{color:var(--mint);text-decoration:none}.toast{position:fixed;right:22px;bottom:22px;background:#17243b;border:1px solid var(--line);padding:12px 16px;border-radius:13px;box-shadow:var(--shadow);font-size:12px;max-width:340px;display:none;z-index:20}.toast.show{display:block;animation:rise .2s ease}@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}@media(max-width:950px){.hero{grid-template-columns:1fr;gap:25px}.demo-card{max-width:680px}.feature-grid{grid-template-columns:repeat(2,1fr)}.workspace{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.shell{padding:16px 15px 32px}.topbar{align-items:flex-start}.nav a{display:none}.nav .pill{font-size:9px}.hero{padding:22px 0 32px}.hero h1{letter-spacing:-2.4px}.hero p{font-size:15px}.demo-card{padding:16px;border-radius:22px}.feature-grid{grid-template-columns:1fr 1fr;gap:9px}.feature{padding:15px;min-height:180px}.section{padding:26px 0}.section-head{display:block}.section-head p{margin-top:10px}.steps{grid-template-columns:1fr 1fr}.footer{align-items:flex-start;flex-direction:column}.bubble{max-width:96%}.mood-grid{gap:5px}.mood{padding:10px 2px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="AIParentBot home">
+      <div class="brandmark">✦</div><div><strong>AIParentBot</strong><small>Listen · Understand · Support</small></div>
+    </a>
+    <nav class="nav">
+      <a href="#features">Features</a><a href="#experience">Try the demo</a><a href="#how">How it works</a>
+      <span class="pill"><span class="dot"></span> INTERACTIVE PREVIEW</span>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">A little more understanding</div>
+        <h1>Parenting has questions.<br><span class="gradient">You deserve support.</span></h1>
+        <p>Meet AIParentBot, a voice-first project exploring more thoughtful conversations through speech, emotion-aware responses, and conversation memory.</p>
+        <div class="actions">
+          <a class="btn primary" href="#experience">✦ Try the interactive demo <span aria-hidden="true">→</span></a>
+          <a class="btn secondary" href="https://github.com/TheZohaibKhan/AIParentBot" target="_blank" rel="noopener">⌘ View source on GitHub</a>
+        </div>
+        <div class="fine">This is a browser-based showcase with sample responses — no account required.</div>
+      </div>
+      <div class="demo-card" aria-label="Interactive chat demo">
+        <div class="card-top">
+          <div class="assistant-id"><div class="avatar">✦</div><div><strong>Your AIParentBot companion</strong><span>Supportive conversation preview</span></div></div>
+          <span class="mini-status">● DEMO MODE</span>
+        </div>
+        <div class="chat-preview" id="chat" aria-live="polite">
+          <div class="bubble bot"><small>AIParentBot · Welcome</small>Hi there. Parenting can bring a lot of feelings at once. What’s on your mind today?</div>
+          <div class="bubble user"><small>You · Example</small>I feel overwhelmed trying to balance everything.</div>
+          <div class="bubble bot"><small>AIParentBot · Sample reply</small>That sounds like a lot to carry. You don’t have to solve everything at once. What is one thing that feels most urgent right now?</div>
+        </div>
+        <div class="typing" id="typing">AIParentBot is preparing a demo response…</div>
+        <div class="suggestions">
+          <button class="chip" data-prompt="I feel overwhelmed today.">I feel overwhelmed</button>
+          <button class="chip" data-prompt="How can I listen better to my child?">Communication tips</button>
+          <button class="chip" data-prompt="I need a moment to calm down.">Help me reset</button>
+        </div>
+        <form class="composer" id="chatForm">
+          <input id="messageInput" autocomplete="off" maxlength="500" placeholder="Share what's on your mind…" aria-label="Write a message">
+          <button class="icon-btn" type="button" id="voiceBtn" title="Use voice input" aria-label="Use voice input">🎙</button>
+          <button class="icon-btn send" type="submit" aria-label="Send message">➤</button>
+        </form>
+        <div class="micro-note">Demo replies are generated in your browser and are not sent to an AI service.</div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="section-head"><div><div class="eyebrow">Designed around care</div><h2>Technology with a human touch.</h2></div><p>The project explores a voice-based flow where spoken words, audio signals, and conversational context can work together.</p></div>
+      <div class="feature-grid">
+        <article class="feature"><div class="feature-icon">🎙</div><h3>Voice-first input</h3><p>Explore a hands-free interface concept using browser voice recognition when your browser supports it.</p></article>
+        <article class="feature"><div class="feature-icon">〰</div><h3>Emotion-aware concept</h3><p>The Python project includes audio feature extraction and a machine-learning emotion classifier. Labels are estimates, not diagnoses.</p></article>
+        <article class="feature"><div class="feature-icon">✧</div><h3>Supportive responses</h3><p>Try sample replies that encourage reflection, gentle communication, and one manageable next step.</p></article>
+        <article class="feature"><div class="feature-icon">◷</div><h3>Conversation memory</h3><p>The local prototype includes SQLite conversation storage. This static demo does not save chats to a server.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-head"><div><div class="eyebrow">Make it your own</div><h2>Explore a response style.</h2></div><p>Select a feeling and support style to see how a thoughtful response might sound. This is a scripted example, not a live model prediction.</p></div>
+      <div class="workspace">
+        <div class="panel">
+          <h3>How are you feeling?</h3><p class="sub">Choose the feeling closest to your moment.</p>
+          <div class="mood-grid" id="moods">
+            <button class="mood active" data-mood="overwhelmed"><span>🌧️</span>Overwhelmed</button>
+            <button class="mood" data-mood="worried"><span>🌱</span>Worried</button>
+            <button class="mood" data-mood="frustrated"><span>🌋</span>Frustrated</button>
+            <button class="mood" data-mood="tired"><span>🌙</span>Tired</button>
+            <button class="mood" data-mood="hopeful"><span>☀️</span>Hopeful</button>
+            <button class="mood" data-mood="unsure"><span>☁️</span>Unsure</button>
+          </div>
+          <div class="range-label"><span>Response style</span><strong id="styleValue">Gentle</strong></div>
+          <input id="styleRange" type="range" min="0" max="2" value="0" aria-label="Response style">
+          <div class="range-label"><span>More gentle</span><span>Balanced · Practical</span></div>
+        </div>
+        <div class="panel">
+          <h3>A small next step</h3><p class="sub">A supportive response preview based on your selection.</p>
+          <div class="response-box"><div class="response-label">Sample response · <span id="moodLabel">Overwhelmed</span></div><p id="sampleResponse">It sounds like you're carrying a lot right now. Pause for one slow breath, then choose just one thing that needs your attention first. You don't have to do everything at once.</p></div>
+          <div class="response-footer"><span class="tiny">Not generated by the Python backend.</span><button class="btn secondary" id="useResponse">↗ Try this in chat</button></div>
+        </div>
+      </div>
+      <div class="notice"><span>ⓘ</span><div><strong>A caring boundary:</strong> AIParentBot is a learning project, not a therapist, doctor, or emergency service. If someone is in immediate danger, contact local emergency services or a trusted person who can help.</div></div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="section-head"><div><div class="eyebrow">Behind the experience</div><h2>From voice to conversation.</h2></div><p>The repository contains Python modules for a local prototype. This public page demonstrates the concept without running those modules.</p></div>
+      <div class="steps">
+        <div class="step"><b>01 / CAPTURE</b><h4>Voice input</h4><p>A local microphone recording can provide audio for processing.</p></div>
+        <div class="step"><b>02 / INTERPRET</b><h4>Speech + audio features</h4><p>Speech recognition transcribes words; MFCC features feed the emotion model.</p></div>
+        <div class="step"><b>03 / RESPOND</b><h4>Response + speech</h4><p>The intended flow generates a reply and converts text into spoken audio.</p></div>
+        <div class="step"><b>04 / REMEMBER</b><h4>Local history</h4><p>The Python prototype includes SQLite storage for conversation history.</p></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div>© <span id="year"></span> AIParentBot · A learning project built with Python and AI technologies.</div><div><a href="https://github.com/TheZohaibKhan/AIParentBot" target="_blank" rel="noopener">Explore the code on GitHub ↗</a></div></footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const chat = $('#chat'), input = $('#messageInput'), typing = $('#typing');
+  let currentMood = 'overwhelmed', toastTimer;
+  $('#year').textContent = new Date().getFullYear();
+  const moodNames = {overwhelmed:'Overwhelmed',worried:'Worried',frustrated:'Frustrated',tired:'Tired',hopeful:'Hopeful',unsure:'Unsure'};
+  const responses = {
+    overwhelmed:{
+      gentle:"It sounds like you're carrying a lot right now. Pause for one slow breath, then choose just one thing that needs your attention first. You don't have to do everything at once.",
+      balanced:"When everything feels urgent, it can help to write down what is on your mind and circle one realistic next step. What can wait until tomorrow?",
+      practical:"Try a two-minute reset: put both feet on the floor, take three slow breaths, and write down the single task that matters most next."
+    },
+    worried:{
+      gentle:"Worry can make the future feel very close and heavy. You don't need every answer right now. What is one thing you know for sure in this moment?",
+      balanced:"Let's separate what you can influence from what you can't control today. Pick one small action in the first group and give yourself permission to pause the rest.",
+      practical:"Write two lists: 'I can act on this' and 'I can't solve this today.' Choose one item from the first list and set a small time to address it."
+    },
+    frustrated:{
+      gentle:"It makes sense to need a pause when emotions are running high. Taking a moment before responding can protect the conversation and give you space to reset.",
+      balanced:"Before continuing the conversation, take a short break if it is safe to do so. Then try naming the issue without blame: 'I'm finding this difficult, and I want us to work it out.'",
+      practical:"Step away briefly if everyone is safe, relax your shoulders, and return with one clear sentence about what needs to change."
+    },
+    tired:{
+      gentle:"You deserve care, too. When energy is low, doing less can be the most sensible choice. Is there one task you can postpone or ask someone to share?",
+      balanced:"Choose the essentials for today and let the non-urgent things wait. Rest is part of being able to show up, not a reward you have to earn.",
+      practical:"Pick one essential task, one thing to delegate, and one thing to postpone. If possible, protect a short period for rest."
+    },
+    hopeful:{
+      gentle:"I'm glad there's a little hope in the picture. Hold on to what is helping, even if it is small. What would make that feeling easier to return to tomorrow?",
+      balanced:"Notice what is working and build on it with one small repeatable habit. Progress doesn't have to be dramatic to count.",
+      practical:"Write down one thing that went well and one small action you can repeat tomorrow. Keep it achievable."
+    },
+    unsure:{
+      gentle:"It's okay not to have a clear answer yet. You can take your time and start by describing what feels confusing, without needing to fix it immediately.",
+      balanced:"When a situation feels unclear, it helps to name the decision in front of you and what information is still missing. You can take the next step after that.",
+      practical:"Complete these two prompts: 'The decision I need to make is…' and 'The information I still need is…' Start with the second one."
+    }
+  };
+  function styleKey(){return ['gentle','balanced','practical'][Number($('#styleRange').value)]}
+  function showToast(message){const t=$('#toast');t.textContent=message;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),3200)}
+  function addBubble(text,who,label){const el=document.createElement('div');el.className='bubble '+who;const small=document.createElement('small');small.textContent=label;el.appendChild(small);const body=document.createElement('div');body.textContent=text;el.appendChild(body);chat.appendChild(el);chat.scrollTop=chat.scrollHeight}
+  function chooseResponse(text){
+    const t=text.toLowerCase();
+    if(/overwhelm|too much|stress|pressure|everything/.test(t))currentMood='overwhelmed';
+    else if(/worr|anx|afraid|scared|future/.test(t))currentMood='worried';
+    else if(/angry|frustrat|annoy|upset|mad/.test(t))currentMood='frustrated';
+    else if(/tired|exhaust|sleep|drained/.test(t))currentMood='tired';
+    else if(/hope|happy|good|proud|better/.test(t))currentMood='hopeful';
+    else if(/confus|unsure|don't know|dont know|uncertain/.test(t))currentMood='unsure';
+    return responses[currentMood][styleKey()];
+  }
+  function send(text){
+    const message=(text||'').trim();if(!message)return;
+    if(message.length>500){showToast('Please keep your message under 500 characters.');return}
+    addBubble(message,'user','You');
+    input.value='';typing.classList.add('show');
+    setTimeout(()=>{typing.classList.remove('show');const reply=chooseResponse(message);addBubble(reply,'bot','AIParentBot · Demo response');showToast('Sample response shown. This is not a live AI connection.');},650);
+  }
+  $('#chatForm').addEventListener('submit',e=>{e.preventDefault();send(input.value)});
+  document.querySelectorAll('[data-prompt]').forEach(b=>b.addEventListener('click',()=>send(b.dataset.prompt)));
+  document.querySelectorAll('.mood').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.mood').forEach(x=>x.classList.remove('active'));b.classList.add('active');currentMood=b.dataset.mood;updateResponse();
+  }));
+  function updateResponse(){
+    $('#moodLabel').textContent=moodNames[currentMood];
+    $('#sampleResponse').textContent=responses[currentMood][styleKey()];
+    $('#styleValue').textContent={gentle:'Gentle',balanced:'Balanced',practical:'Practical'}[styleKey()];
+  }
+  $('#styleRange').addEventListener('input',updateResponse);
+  $('#useResponse').addEventListener('click',()=>{input.value=responses[currentMood][styleKey()];input.focus();document.querySelector('#top').scrollIntoView({behavior:'smooth'});showToast('Sample response copied into the chat composer.');});
+  $('#voiceBtn').addEventListener('click',()=>{
+    const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+    if(!SpeechRecognition){showToast('Voice input is not supported in this browser. Try a current version of Chrome.');return}
+    const recognition=new SpeechRecognition();recognition.lang='en-IN';recognition.interimResults=false;recognition.maxAlternatives=1;
+    $('#voiceBtn').textContent='…';recognition.onresult=e=>{input.value=e.results[0][0].transcript;input.focus();showToast('Voice captured. Press send when ready.');};
+    recognition.onerror=()=>showToast('Voice input could not be captured. Check microphone permission and try again.');
+    recognition.onend=()=>$('#voiceBtn').textContent='🎙';
+    try{recognition.start()}catch(e){$('#voiceBtn').textContent='🎙';showToast('Could not start voice recognition.')}
+  });
+  updateResponse();
+})();
+</script>
+</body>
+</html>
